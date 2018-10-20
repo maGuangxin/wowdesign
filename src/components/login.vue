@@ -1,15 +1,20 @@
 <template>
- 	<div>{{name}}</div>
- 	
+ 	<div>
+    {{name}}
+ 	</div>
 </template>
 
 <script>
+
 export default {
-  	name:'adBar',
+  	name:'index',
   	data(){
   		return {
-  			name:'足部导航'
+  			name:'login'
   		}
+  	},
+  	components:{
+  		
   	}
 }
 </script>

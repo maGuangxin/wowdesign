@@ -1,18 +1,20 @@
 <template>
  	<div>
- 		{{name}}
-		<adbar></adbar>
-		<searchbar></searchbar>
-		<tagbox></tagbox>
-		<footer></footer>	
+    
+    <adbar></adbar>
+ 		<searchbar></searchbar>
+    <tagbox></tagbox>
+    <router-view></router-view>
  	</div>
 </template>
 
 <script>
 	import adbar from './index/adbar'
 	import searchbar from './index/searchbar'
-	import tagbox from './index/tagbox'
-	import footerbar from './index/footerbar'
+  import tagbox from './index/tagbox'
+	
+  
+  
 export default {
   	name:'index',
   	data(){
@@ -23,12 +25,14 @@ export default {
   	components:{
   		adbar,
   		searchbar,
-  		tagbox,
-  		footerbar
-  	}
+  		tagbox
+  	},
+    mounted(){
+      
+    }
 }
 </script>
-
+  
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 

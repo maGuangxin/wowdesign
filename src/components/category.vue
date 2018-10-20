@@ -1,16 +1,21 @@
 <template>
  	<div>
- 		{{name}}
+    {{name}}
  	</div>
 </template>
 
 <script>
+	
 export default {
-  data(){
-  	return {
-  		name:'家具'
+  	name:'index',
+  	data(){
+  		return {
+  			name:'分类'
+  		}
+  	},
+  	components:{
+  		
   	}
-  }
 }
 </script>
 
