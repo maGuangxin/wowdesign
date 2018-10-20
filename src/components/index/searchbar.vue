@@ -1,11 +1,17 @@
 <template>
- 	<div class="search">
- 		<i></i>
- 		<router-link tag="div" to="/search">
- 			<i class="iconfont icon-icon-search"></i>
- 			<input type="text" placeholder="搜索我的尖叫好物">
- 		</router-link>
- 	</div>
+ 	<div>
+ 		<div class="inside">
+	    	<div class="nav clear">
+		        <div class="logobox">      
+		        	<img class="logo" src="../../assets/titleView.png">
+		    	</div> 
+	        	<div class="inputbox clear">
+	          		<img class="biggass" src="../../assets/biggass.png">
+	          		<input class="serch" type="text" name="">
+	    		</div>       
+    		</div>
+    	</div>
+  	</div>
  	
 </template>
 
@@ -22,36 +28,42 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-	.search{
-		height:34px;
-		display:flex;
-		
-		align-items:center;
-		padding:5px 10px;
-		>i{
-			
-			width:65px;
-			height:15px;
-			
-			background:url('../../assets/titleView.png') no-repeat center;
-			background-size:cover;
-		}
-		div{
-			background:#ccc;
-			flex:1;
-			margin-left:20px;
-			border:1px solid #ccc;
-			border-radius:13px;
-			width:210px;
-			height:25px;
-			padding:0 10px;
-			input{
-				outline:0;
-				border:0;
-				background:#ccc;
-				height:100%
-			}
-			
-		}
+	.inside{
+		background:white;
+		position:relative;
+	 	padding:0.1rem 0;
+	 	width:100%;
+
+	 	div.nav{
+	 		height:0.2rem;
+	 		display:flex;
+	 		div.logobox{
+	 			
+	 			margin:0 0.1rem;
+	 			img{
+	 				
+	 				height:100%;
+	 			}
+	 		}
+	 		div.inputbox{
+	 			border-radius:0.09rem;
+	 			margin:0 0.1rem;
+	 			flex:1;
+	 			background:#f5f5f5;
+	 			height:100%;
+	 			line-height:100%;
+	 			img{
+	 				margin-left:0.1rem;
+					height:100%;
+					float:left;
+	 			}
+	 			input{
+					border:0;
+					background:#f5f5f5;
+					outline:none;
+					float:left;
+	 			}
+	 		}
+	 	}
 	}
 </style>

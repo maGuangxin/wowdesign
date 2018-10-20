@@ -1,6 +1,6 @@
 <template>
  	<div>
- 		{{name}}
+ 		<router-view></router-view>		
  	</div>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
   data(){
   	return {
-  		name:'家具'
+  		name:'我'
   	}
   }
 }

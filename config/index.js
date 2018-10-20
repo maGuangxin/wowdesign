@@ -13,9 +13,33 @@ module.exports = {
     proxyTable: {
         '/v2':{
             target:'https://m.wowdsgn.com/',
-            hostname:"m.wowdsgn.com",
+            host:"m.wowdsgn.com",
             changeOrigin:true
-        }
+        },
+        '/pages':{
+            target:'https://m.wowdsgn.com',
+            host:'m.wowdsgn.com',
+            changeOrigin:true
+        },    
+        '/itemdetail':{
+            target:'https://m.wowdsgn.com',
+            host:'m.wowdsgn.com',
+            changeOrigin:true
+
+        },
+         '/recommend':{
+            target:'https://m.wowdsgn.com',
+            host:'m.wowdsgn.com',
+            changeOrigin:true
+
+        },
+        
+         '/brand':{
+            target:'https://m.wowdsgn.com',
+            host:'m.wowdsgn.com',
+            changeOrigin:true
+
+        },
     },
 
     // Various Dev Server settings

@@ -1,35 +1,41 @@
 <template>
   <div id="app">
-	
     <router-view></router-view> 
-  	<scroll2Top></scroll2Top>
-    <navbar></navbar>	
+    <navbar></navbar>
   </div>
 </template>
 
 <script>
- import navbar from './components/navbar'
- import scroll2Top from './components/scroll2Top'
+	import navbar from './components/navbar'
 export default {
-  name: 'App',
-  components:{
-  	navbar,
-  	scroll2Top
-  }
+	name: 'App' , 
+	components:{
+		navbar
+		}
 }
 </script>
 
 <style>
-	*{
-		margin: 0;
-		padding: 0;
-	}
-	.clear::after{
-		content:"";
-		clear: both;
-		visibility:hidden;
-		overflow: hidden;
-		display: block;
+ *{
+    padding:0px;
+    margin:0px;
+  }
+  .clear::after{
+  	content:"";
+  	clear: both;
+  	visibility:hidden;
+  	overflow: hidden;
+  	display: block;
 
-	}
+  }
+  html{
+  	font-size: 26.667vw;
+  }
+  body{
+    font-size: 14px;
+    background: #f5f5f5;
+  }
+  ul{
+    list-style: none;
+  }
 </style>

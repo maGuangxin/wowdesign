@@ -1,7 +1,11 @@
 <template>
  	<div class="all">
-		<swiper></swiper>
- 		<div v-for="data,index in $store.state.moduleContent" class="content" >
+		
+ 		<div v-for="data,index in this.$store.state.imglist.modules" v-if="$store.state.imglist.modules[0]===data?false:true" class="content" >
+ 			<div v-if="data.moduleContent.products">
+ 				<h2>{{data.moduleName}}</h2>
+ 			</div>
+				<div class="meizhoutuijian" v-if="data.moduleDescription">{{data.moduleDescription}}</div>
 	 		<div v-if="data.moduleContent.bannerImgSrc" class="adBanner">
 	 			<img :src="data.moduleContent.bannerImgSrc" alt="">
 	 		</div>
@@ -16,6 +20,7 @@
 	 						<span>￥
 	 							{{product.sellPrice}}
 	 						</span>
+	 						<span  class="originalPrice" v-if="product.originalPrice">￥{{product.originalPrice}}</span>
 	 					
 	 				</div>
 	 			</div>
@@ -27,54 +32,36 @@
  	</div>
 </template>
 
-<script>
-	import swiper from '../../swiper'
-	import axios from 'axios'
-	import 'swiper/dist/css/swiper.min.css'
+<script type="text/javascript">
+	import axios from "axios"
 	import Swiper from "swiper"
-
-export default {
-  data(){
-  	return {
-  		name:'活动'
-  	}
-  },
-  
-  components:{
-  	swiper
-  },
-  mounted(){
-  	console.log('recommend')
-  	axios.get(this.$store.state.ajaxUrl).then(resp=>{
-  		this.$store.dispatch('getBannerData',resp.data.data.modules[0].moduleContent.banners)       
-  		this.$store.dispatch('getModuleContent',resp.data.data.modules) 
-  	}).catch(error=>{
-  	  console.log(error)
-  	})
-  },
-  updated(){
-  	new Swiper ('.productSwiper', {
-  	    pagination: {
-  	      el: '.swiper-pagination'
-  	    },
-  	    slidesPerView:4,
-  	    slidesPerGroup:4
-  	})
-  }
-}
+  	import "swiper/dist/css/swiper.css"
+		export default{
+			updated(){
+				var swiper = new Swiper('.a',{
+				 slidesPerView : 3,	
+				 spaceBetween : 20,	
+				});
+			},
+		}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .all{
 	background:#eee;
-	padding-bottom:70px;
+	padding-bottom:0.7rem;
 	.content{
 		width:100%;
-		margin-top:20px;
+		margin-top:0.2rem;
 		background:white;
-		padding:20px 0;
-		
+		padding-top:0.2rem;
+		text-align:center;
+		h2{
+			height:0.28rem;
+			line-height:0.28rem;
+			margin:0.16rem 0;
+		}
 		.adBanner{
 			width:100%;
 
@@ -87,34 +74,39 @@ export default {
 			>div{
 				
 				div{
+					
 					float:left;
 					box-sizing:border-box;
 					border:1px solid #eee;
 					list-style:none;
 					width:50%;
-					padding:20px 0;
+					padding-top:0.2rem;
 					
 					img{
-						display:block;
-						width:180px;
-						height:180px;
+						
+						width:1.8rem;
+						height:1.8rem;
 						
 						
 					}
 					p{	
-						height:20px;
-						line-height:20px;
+						height:0.2rem;
+						line-height:0.2rem;
 						text-overflow:ellipsis;
 						white-space:nowrap;
 						overflow:hidden;
 						width:100%;
 					}
 					span{
-						height:20px;
-						line-height:20px;
-						display:block;
+						height:0.2rem;
+						line-height:0.2rem;
+						
 						text-align:center;
 						width:100%;
+					}
+					span.originalPrice{
+						color:#ccc;
+						text-decoration: line-through;
 					}
 					
 						
@@ -125,11 +117,12 @@ export default {
 		.page-module-more{
 			text-align:center;
 			>a{
-				font-size:12px;
+				font-size:0.12rem;
 				color:black;
 				text-decoration:none;
-				padding:5px;
+				padding:0.1rem 0;
 				display:block;
+				
 			}
 		}
 	}
