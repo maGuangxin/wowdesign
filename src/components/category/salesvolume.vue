@@ -5,7 +5,7 @@
 		  infinite-scroll-disabled="loading"
 		  infinite-scroll-immediate-check= "false"
 		  infinite-scroll-distance="0">
-			<li v-for="data in dataList" class="lf">
+			<li v-for="data in this.$store.state.ajaxdatalist" class="lf">
 				<img :src="data.productImg" alt="">
 				<p>{{data.productName}}</p>
 				<span>￥{{data.sellPrice}}</span>
@@ -24,7 +24,7 @@
 <script>
 	// 引入接口
 	import axios from 'axios';
-	import "swiper/dist/css/swiper.css"
+	
 
 	// 导出接口
 	export default{
@@ -47,8 +47,9 @@
 		 console.log( this.$route.params.categoryId)
 		 axios.get(`/pages/category/${this.$route.params.categoryId}?pageNumber=1&orderBy=sales&sort=desc&__=1540023974255`).then((res) => {
 		 	 console.log(res.data)
-		 	  this.dataList = res.data.data.products;
-		 	  console.log(res.data.data.totalResult)
+		 	 this.$store.dispatch('tabsList',res.data.data.products)
+		 	  // this.dataList = res.data.data.products;
+		 	  // console.log(res.data.data.totalResult)
 		 	  this.total = res.data.data.totalResult
 		  }).catch(function(error) {
 		      console.log(error);

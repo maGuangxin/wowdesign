@@ -8,32 +8,11 @@
 			<span class="right" @click="backCategoryClick()"><i class="iconfont icon-fenlei"></i></span>
 		</div>
 		<!-- 轮播导航 -->
-		<div class="swiper-container" v-if="this.$store.state.isshow1">
+		<div class="swiper-container">
 		    <div class="swiper-wrapper">
-		      <div class="swiper-slide">All</div>
-		      <div class="swiper-slide">沙发</div>
-		      <div class="swiper-slide">椅凳</div>
-		      <div class="swiper-slide">桌几</div>
-		      <div class="swiper-slide">柜架</div>
-		      <div class="swiper-slide">休闲椅</div>
-		      <div class="swiper-slide">餐桌</div>
-		      <div class="swiper-slide">茶几和边桌</div>
-		      <div class="swiper-slide">书桌</div>
-		      <div class="swiper-slide">床</div>
-		    </div>
-		</div>
-		<div class="swiper-container" v-if="this.$store.state.isshow2">
-		    <div class="swiper-wrapper">
-		      <div class="swiper-slide">All55565</div>
-		      <div class="swiper-slide">沙发</div>
-		      <div class="swiper-slide">椅凳</div>
-		      <div class="swiper-slide">桌几</div>
-		      <div class="swiper-slide">柜架</div>
-		      <div class="swiper-slide">休闲椅</div>
-		      <div class="swiper-slide">餐桌</div>
-		      <div class="swiper-slide">茶几和边桌</div>
-		      <div class="swiper-slide">书桌</div>
-		      <div class="swiper-slide">床</div>
+		      <div class="swiper-slide" v-for="item,index in $store.state.tabsList" @click="tabClick(item)">
+		      	{{item.tabname}}
+			  </div>
 		    </div>
 		</div>
 		<!-- 选项卡 -->
@@ -124,10 +103,29 @@
 			backCategoryClick(){
 				console.log('backCategoryClick')
 				this.$router.push('/category')
+			
 			},
 			backIndexClick(){
 				console.log('回到首页')
 				this.$router.push('/index')
+			},
+			tabClick(data){
+				console.log(data)
+				this.$router.push('/category/inner/'+data.path)
+				
+				console.log(this.$route.params.categoryId)
+				
+				axios.get(`/pages/category/${this.$route.params.categoryId}?pageNumber=1&orderBy=price&sort=asc&_=1539845220121`).then((res) => {
+					 console.log(res.data)
+					 this.$store.dispatch('tabsList',res.data.data.products)
+					  this.dataList = res.data.data.products;
+					  console.log(res.data.data.totalResult)
+					  this.total = res.data.data.totalResult
+				 }).catch(function(error) {
+				     console.log(error);
+				 });
+				
+
 			}
 
 		}
