@@ -55,6 +55,7 @@
 					border:0;
 					height:0.4rem;
 					border-bottom: 1px solid #f5f5f5;
+					outline:none;
 				}
 				div{
 					height:0.4rem;
@@ -65,6 +66,7 @@
 					z-index: 100;
 					right:0;
 					bottom:0;
+					outline: none;
 				}
 			}
 		}
